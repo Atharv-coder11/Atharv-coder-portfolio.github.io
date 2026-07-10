@@ -711,13 +711,42 @@ footer .foot-socials{display:flex; justify-content:center; gap:16px; margin-bott
         </div>
       </div>
  
-      <form class="reveal" id="contactForm">
-        <div class="form-group"><label>Name</label><input type="text" name="name" required placeholder="Your name"></div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"></div>
-        <div class="form-group"><label>Message</label><textarea name="message" rows="5" required placeholder="Tell me about the opportunity or project..."></textarea></div>
-        <button type="submit" class="btn btn-primary">Send Message →</button>
-        <div class="form-status" id="formStatus"></div>
-      </form>
+    <form class="reveal" id="contactForm">
+
+      <div class="form-group">
+        <label>Name</label>
+        <input
+            type="text"
+            name="from_name"
+            required
+            placeholder="Your name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+            type="email"
+            name="from_email"
+            required
+            placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea
+            name="message"
+            rows="5"
+            required
+            placeholder="Tell me about the opportunity or project..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Send Message →
+      </button>
+
+      <div class="form-status" id="formStatus"></div>
+
+    </form>
     </div>
   </div>
 </section>
@@ -976,19 +1005,30 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* =========================================================
    7. CONTACT FORM (EmailJS-ready — plug in your keys)
    ========================================================= */
-document.getElementById('contactForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const status = document.getElementById('formStatus');
-  status.style.color = 'var(--cyan)';
-  status.textContent = 'Sending...';
-  /* TODO: replace with real EmailJS call, e.g.
-     emailjs.sendForm('SERVICE_ID','TEMPLATE_ID', this, 'PUBLIC_KEY')
-  */
-  setTimeout(()=>{
-    status.style.color = 'var(--green)';
-    status.textContent = '✓ Message captured locally — connect EmailJS to deliver it to your inbox.';
-    this.reset();
-  }, 900);
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const status = document.getElementById('formStatus');
+
+    emailjs.sendForm(
+        'service_sdxzdtq',
+        'template_kssg9o5',
+        this
+    ).then(() => {
+
+        status.style.color = '#2BFFB0';
+        status.textContent = '✓ Message sent successfully!';
+
+        this.reset();
+
+    }).catch((error) => {
+
+        status.style.color = 'red';
+        status.textContent = 'Failed to send message.';
+
+        console.error(error);
+
+    });
 });
  
 /* =========================================================
@@ -1235,6 +1275,12 @@ window.addEventListener('load', ()=>{
   });
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("No-HZuDTolQvwzHuG");
+</script>
 </body>
 </html>
  
+              
