@@ -994,9 +994,16 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
 /* =========================================================
    8. RESUME DOWNLOAD (placeholder)
    ========================================================= */
-document.getElementById('downloadResumeBtn').addEventListener('click', function(e){
-  e.preventDefault();
-  alert('Add your resume.pdf to the project folder and point this button to it, e.g. href="resume.pdf" download.');
+document.getElementById('downloadResumeBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const link = document.createElement('a');
+    link.href = 'assets/Atharv_Jamodkar_Resume.pdf';
+    link.download = 'Atharv_Jamodkar_Resume.pdf';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 });
  
 /* =========================================================
