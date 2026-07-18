@@ -10,7 +10,7 @@
 <!-- ===== FONTS ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
- 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
 <!-- ===== THREE.JS (3D engine) ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
  
@@ -276,27 +276,31 @@ nav.scrolled{background:rgba(6,8,20,.72); backdrop-filter:blur(16px); border-col
 }
 .avatar-badge{
     position:absolute;
-    bottom:24px;
-    right:24px;
-    width:58px;
-    height:58px;
+    bottom:18px;
+    right:18px;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    background:linear-gradient(
-    135deg,
-    rgba(45,226,255,.25),
-    rgba(123,92,250,.35)
-    );
-    backdrop-filter:blur(18px);
+    background:rgba(10,15,25,.85);
     backdrop-filter:blur(12px);
     border:2px solid rgba(45,226,255,.5);
-    color:#2DE2FF;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size:22px;
-    font-weight:700;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    font-family:'Orbitron', sans-serif;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:3px;
+
+    color:#2DE2FF;
+    text-shadow:
+        0 0 8px rgba(45,226,255,.8),
+        0 0 18px rgba(45,226,255,.5);
+
     z-index:10;
+    transition:.3s ease;
     animation:floatBadge 4s ease-in-out infinite;
 }
 @keyframes floatBadge{
